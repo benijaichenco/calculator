@@ -45,3 +45,16 @@ function operate() {
         return prevValue = divide(prevValue, currValue);
     };
 };
+//
+
+//create a function to populate the display when pressing numbers
+display.textContent = '0';
+numbers.forEach(num => {
+    num.addEventListener('click', (e) => {
+        //if the display is only 0, change the 0 to a number instead
+        if (display.textContent === '0') {
+            display.textContent = '';
+        };
+        display.textContent += e.target.textContent;
+    });
+});
