@@ -28,3 +28,20 @@ function divide(a, b) {
     return a / b;
 };
 //
+
+//create a function that takes an operator and 2 numbers and then calls one of the
+//math function on the numbers
+function operate() {
+    prevValue = Number(prevValue);
+    currValue = Number(currValue);
+    //if statement
+    if (operator === '+') {
+        return prevValue = add(prevValue, currValue);
+    } else if (operator === '−') {
+        return prevValue = subtract(prevValue, currValue);
+    } else if (operator === '×') {
+        return prevValue = multiply(prevValue, currValue);
+    } else if (operator === '÷') {
+        return prevValue = divide(prevValue, currValue);
+    };
+};
