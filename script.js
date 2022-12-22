@@ -51,8 +51,10 @@ function operate() {
 display.textContent = '0';
 numbers.forEach(num => {
     num.addEventListener('click', (e) => {
+        if (display.textContent.length >= 9) {
+            return;
         //if the display is only 0, change the 0 to a number instead
-        if (display.textContent === '0') {
+        } else if (display.textContent === '0') {
             display.textContent = '';
         };
         display.textContent += e.target.textContent;
