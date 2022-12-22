@@ -50,9 +50,15 @@ function operate() {
 display.textContent = '0';
 numbers.forEach(num => {
     num.addEventListener('click', (e) => {
+        if (currValue === '') {
+            display.textContent = '';
+        };
+        
         if (display.textContent.length >= 9) {
             return;
-        } else if (display.textContent === '0') {
+        };
+        
+        if (display.textContent === '0') {
             display.textContent = '';
         };
         display.textContent += e.target.textContent;
@@ -72,16 +78,27 @@ function handleOperator(op) {
 //create function to choose which operator is being pressed, then calculate accordingly
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
-        handleOperator(e.target.textContent);
-        display.textContent += operator;
-        console.log(operator);
+        if (operator !== '') {
+            return;
+        } else {
+            handleOperator(e.target.textContent);
+            display.textContent += operator;
+            console.log(operator);
+        };
     });
 });
 
-
+//clear all values and display when pressing the clear button
 clear.addEventListener('click', () => {
     prevValue = '';
     currValue = '';
     operator = '';
     display.textContent = '0';
+});
+
+//make the calculator calculate
+const equal = document.querySelector('.equal');
+equal.addEventListener('click', () => {
+    operate();
+    display.textContent = prevValue;
 });
