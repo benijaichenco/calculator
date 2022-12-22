@@ -78,6 +78,14 @@ function handleOperator(op) {
 //create function to choose which operator is being pressed, then calculate accordingly
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
+        if (prevValue !== '' && currValue !== '') {
+            operate();
+            operator = '';
+            display.textContent = prevValue;
+            currValue = display.textContent;
+            prevValue = '';
+            };
+
         if (operator !== '') {
             return;
         } else {
