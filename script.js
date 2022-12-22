@@ -53,7 +53,7 @@ numbers.forEach(num => {
         if (currValue === '') {
             display.textContent = '';
         };
-        
+
         if (display.textContent.length >= 9) {
             return;
         };
@@ -99,6 +99,12 @@ clear.addEventListener('click', () => {
 //make the calculator calculate
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
+    if (currValue === '') {
+        return;
+    };
     operate();
+    operator = '';
     display.textContent = prevValue;
+    currValue = display.textContent;
+    prevValue = '';
 });
