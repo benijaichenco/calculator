@@ -77,3 +77,11 @@ operators.forEach(op => {
         console.log(operator);
     });
 });
+
+
+clear.addEventListener('click', () => {
+    prevValue = '';
+    currValue = '';
+    operator = '';
+    display.textContent = '0';
+});
