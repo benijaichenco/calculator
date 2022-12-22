@@ -5,6 +5,9 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const clear = document.querySelector('.clear');
 const deleteLastNum = document.querySelector('.delete');
+let operator = '';
+let prevValue = '';
+let currValue = '';
 //
 
 
@@ -25,4 +28,3 @@ function divide(a, b) {
     return a / b;
 };
 //
-
