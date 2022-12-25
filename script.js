@@ -5,6 +5,7 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const clear = document.querySelector('.clear');
 const deleteLastNum = document.querySelector('.delete');
+const decimal = document.querySelector('.decimal');
 let operator = '';
 let prevValue = '';
 let currValue = '';
