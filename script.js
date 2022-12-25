@@ -149,3 +149,10 @@ equal.addEventListener('click', () => {
     };
     prevValue = '';
 });
+
+
+decimal.addEventListener('click', () => {
+    if (display.textContent.includes('.')) {
+        return;
+    } else display.textContent += '.';
+});
