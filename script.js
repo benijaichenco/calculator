@@ -144,7 +144,6 @@ equal.addEventListener('click', () => {
     display.textContent = prevValue;
     currValue = display.textContent;
     if (display.textContent.length > 7) {
-        console.log('true');
         display.textContent = display.textContent.slice(0, 7) + '...';
     };
     prevValue = '';
@@ -155,4 +154,19 @@ decimal.addEventListener('click', () => {
     if (display.textContent.includes('.')) {
         return;
     } else display.textContent += '.';
+});
+
+deleteLastNum.addEventListener('click', () => {
+    if (display.textContent.includes('...')) {
+        console.log('true');
+        display.textContent = display.textContent.slice(0, -2);
+        display.textContent = currValue;
+    };
+    display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent === '') {
+        display.textContent = 0;
+        currValue = 0;
+    };
+    currValue = display.textContent;
+    console.log(currValue);
 });
