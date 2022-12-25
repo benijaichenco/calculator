@@ -65,7 +65,7 @@ numbers.forEach(num => {
             display.textContent = '';
         };
 
-        if (display.textContent.length >= 9) {
+        if (display.textContent.length >= 7) {
             return;
         };
         
@@ -101,6 +101,10 @@ operators.forEach(op => {
             operator = '';
             display.textContent = prevValue;
             currValue = display.textContent;
+            if (display.textContent.length > 7) {
+                console.log('true');
+                display.textContent = display.textContent.slice(0, 7) + '...';
+            };
             prevValue = '';
             };
 
@@ -139,5 +143,9 @@ equal.addEventListener('click', () => {
     operator = '';
     display.textContent = prevValue;
     currValue = display.textContent;
+    if (display.textContent.length > 7) {
+        console.log('true');
+        display.textContent = display.textContent.slice(0, 7) + '...';
+    };
     prevValue = '';
 });
