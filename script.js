@@ -88,11 +88,11 @@ function handleOperator(op) {
 //create function to choose which operator is being pressed, then calculate accordingly
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
-        if (display.textContent.includes('.')) {
-            console.log('true');
-        };
         if (prevValue !== '' && currValue !== '') {
             operate();
+            if (prevValue % 1 != 0) {
+                prevValue = Math.round(prevValue * 100) / 100;
+            };
             operator = '';
             display.textContent = prevValue;
             currValue = display.textContent;
@@ -124,6 +124,9 @@ equal.addEventListener('click', () => {
         return;
     };
     operate();
+    if (prevValue % 1 != 0) {
+        prevValue = Math.round(prevValue * 100) / 100;
+    };
     operator = '';
     display.textContent = prevValue;
     currValue = display.textContent;
