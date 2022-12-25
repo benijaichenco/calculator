@@ -89,6 +89,10 @@ function handleOperator(op) {
 //create function to choose which operator is being pressed, then calculate accordingly
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
+        if (operator === '÷' && currValue === '0') {
+            alert('Can\'t divide by 0');
+            return;
+        };
         if (prevValue !== '' && currValue !== '') {
             operate();
             if (prevValue % 1 != 0) {
@@ -122,6 +126,10 @@ clear.addEventListener('click', () => {
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
     if (prevValue === '' || currValue === '') {
+        return;
+    };
+    if (operator === '÷' && currValue === '0') {
+        alert('Can\'t divide by 0');
         return;
     };
     operate();
