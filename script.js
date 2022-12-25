@@ -28,6 +28,16 @@ function divide(a, b) {
 };
 
 
+function roundNum() {
+    if(currValue.includes('.')) {
+        console.log('true');
+    } else {
+        console.log('false');
+    };
+};
+    
+
+
 //create a function that takes an operator and 2 numbers and then calls one of the
 //math function on the numbers
 function operate() {
@@ -78,6 +88,9 @@ function handleOperator(op) {
 //create function to choose which operator is being pressed, then calculate accordingly
 operators.forEach(op => {
     op.addEventListener('click', (e) => {
+        if (display.textContent.includes('.')) {
+            console.log('true');
+        };
         if (prevValue !== '' && currValue !== '') {
             operate();
             operator = '';
@@ -107,7 +120,7 @@ clear.addEventListener('click', () => {
 //make the calculator calculate
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
-    if (currValue === '') {
+    if (prevValue === '' || currValue === '') {
         return;
     };
     operate();
