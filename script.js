@@ -278,4 +278,10 @@ window.addEventListener('keydown', (e) => {
         operator = '';
         display.textContent = '0';
     };
+
+    if (e.key === '.') {
+        if (display.textContent.includes('.')) {
+            return;
+        } else display.textContent += '.';
+    };
 });
