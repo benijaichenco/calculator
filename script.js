@@ -79,6 +79,7 @@ numbers.forEach(num => {
 });
 
 
+
 function handleOperator(op) {
     operator = op;
     prevValue = currValue;
@@ -169,4 +170,112 @@ deleteLastNum.addEventListener('click', () => {
     };
     currValue = display.textContent;
     console.log(currValue);
+});
+
+
+//add keyboard support
+window.addEventListener('keydown', (e) => {
+    if (!isNaN(e.key)) {
+        if (currValue === '') {
+            display.textContent = '';
+        };
+
+        if (display.textContent.length >= 7) {
+            return;
+        };
+        
+        if (display.textContent === '0') {
+            display.textContent = '';
+        };
+        display.textContent += e.key;
+        currValue = display.textContent;
+        console.log(currValue);
+    };
+
+    if (e.key === '/' || e.key === '-' || e.key === '*' || e.key === '+') {
+        let pressedOp = '';
+        if (e.key === '/') {
+            pressedOp = '÷';
+        } else if (e.key === '-') {
+            pressedOp = '−';
+        } else if (e.key === '*') {
+            pressedOp = '×';
+        } else if (e.key === '+') {
+            pressedOp = '+'
+        };
+
+        if (operator === '÷' && currValue === '0') {
+            alert('Can\'t divide by 0');
+            return;
+        };
+        if (prevValue !== '' && currValue !== '') {
+            operate();
+            if (prevValue % 1 != 0) {
+                prevValue = Math.round(prevValue * 100) / 100;
+            };
+            operator = '';
+            display.textContent = prevValue;
+            currValue = display.textContent;
+            if (display.textContent.length > 7) {
+                console.log('true');
+                display.textContent = display.textContent.slice(0, 7) + '...';
+            };
+            prevValue = '';
+            };
+
+        if (operator !== '') {
+            return;
+        } else {
+            handleOperator(pressedOp);
+            display.textContent += operator;
+            console.log(operator);
+        };
+    };
+
+    if (e.key === '=') {
+        if (prevValue === '' || currValue === '') {
+            return;
+        };
+        if (operator === '÷' && currValue === '0') {
+            alert('Can\'t divide by 0');
+            return;
+        };
+        operate();
+        if (prevValue % 1 != 0) {
+            prevValue = Math.round(prevValue * 100) / 100;
+        };
+        operator = '';
+        display.textContent = prevValue;
+        currValue = display.textContent;
+        if (display.textContent.length > 7) {
+            display.textContent = display.textContent.slice(0, 7) + '...';
+        };
+        prevValue = '';
+    };
+
+    if (e.key === 'Backspace') {
+        if (display.textContent.includes(operator)) {
+            operator = '';
+        };
+
+        if (display.textContent.includes('...')) {
+            console.log('true');
+            display.textContent = display.textContent.slice(0, -2);
+            display.textContent = currValue;
+        };
+        display.textContent = display.textContent.slice(0, -1);
+        if (display.textContent === '') {
+            display.textContent = 0;
+            currValue = 0;
+        };
+        currValue = display.textContent;
+        console.log(currValue);
+    };
+
+    if (e.key === 'c' || e.key === 'C') {
+        prevValue = '';
+        currValue = '';
+        operator = '';
+        display.textContent = '0';
+    };
 });
